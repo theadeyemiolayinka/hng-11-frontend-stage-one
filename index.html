@@ -1,0 +1,352 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>TheAdeyemiOlayinka | HNG 11 | Frontend Stage 1</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@300;400;600&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      body {
+        margin: 0;
+        padding: 0;
+        font-family: "Josefin Sans", sans-serif;
+        background-color: #121212;
+        color: #fff;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        min-height: 100vh;
+        overflow-x: hidden;
+        overflow-y: hidden;
+      }
+
+      h1 {
+        color: #c01cc0;
+      }
+
+      .container {
+        text-align: center;
+        background: #212121ee;
+        padding: 15px 25px;
+        border-radius: 15px;
+        max-width: 100vw;
+      }
+
+      a {
+        color: #c01cc0;
+        text-decoration: none;
+        font-weight: 600;
+        margin: 0 5px;
+      }
+
+      a:hover {
+        text-decoration: underline;
+      }
+
+      #particles-js {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        z-index: -1;
+      }
+
+      .goal-list {
+        text-align: left;
+        margin: 20px 0;
+      }
+
+      .goal-list li {
+        margin-bottom: 10px;
+      }
+
+      .image-name-box {
+        display: flex;
+        justify-content: center;
+        align-items: flex-end;
+        margin-bottom: 20px;
+      }
+
+      .image-name-box img {
+        /* border-radius: 10px; // Better safe than sorry */
+        margin-right: 20px;
+      }
+
+      .image-name-box-texts {
+        text-align: left;
+        display: flex;
+        flex-direction: column;
+      }
+
+      .data-box {
+        display: flex;
+        justify-content: start;
+        align-content: center;
+        align-items: center;
+        width: 100%;
+        max-width: 400px;
+        margin: 0 auto;
+      }
+
+      /* Responsiveness Media Queries */
+      @media only screen and (max-width: 767px) {
+        body {
+          overflow-y: scroll;
+        }
+      }
+      @media only screen and (max-width: 425px) {
+        .image-name-box {
+          display: flex;
+          flex-direction: column;
+          justify-content: center;
+          align-items: center;
+          margin-bottom: 20px;
+        }
+
+        .data-box {
+          display: flex;
+          justify-content: center;
+        }
+
+        .bottom_link_1 {
+          grid-area: bottom_link_1;
+        }
+
+        .bottom_link_2 {
+          grid-area: bottom_link_2;
+        }
+        .bottom_link_3 {
+          grid-area: bottom_link_3;
+        }
+
+        #links {
+          display: grid;
+          grid-template-columns: repeat(2, 1fr);
+          gap: 5px;
+          justify-items: center;
+          align-items: center;
+          justify-content: center;
+          align-content: center;
+          grid-template-areas:
+            "bottom_link_1 bottom_link_2"
+            "bottom_link_3 bottom_link_3";
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div id="particles-js"></div>
+    <div class="container">
+      <h1>My Tech Goals for the Next 2 Years</h1>
+      <div class="image-name-box">
+        <img
+          data-testid="slackProfilePicture"
+          src="assets/images/theadeyemiolayinka.jpg"
+          alt="Slack Profile Picture"
+        />
+        <div class="image-name-box-texts">
+          <div class="data-box">
+            <p>Slack Name:</p>
+            &nbsp;
+            <p data-testid="slackDisplayName">TheAdeyemiOlayinka</p>
+          </div>
+          <div class="data-box">
+            <p>Name:</p>
+            &nbsp;
+            <p data-testid="slackName">Olayinka Adeyemi</p>
+          </div>
+          <div class="data-box">
+            <p>Email:</p>
+            &nbsp;
+            <p data-testid="slackEmail">olayinkaapps@gmail.com</p>
+          </div>
+        </div>
+      </div>
+      <hr />
+      <ul class="goal-list">
+        <li>Master Advanced Full-Stack Development</li>
+        <li>Work at new higher paying organizations</li>
+        <li>Contribute to more open-source projects</li>
+        <li>Gain proficiency in DevOps tools</li>
+        <li>Start a tech blog to share knowledge</li>
+      </ul>
+      <hr />
+      <p>
+        Current Time (UTC):
+        <span data-testid="currentTimeUTC" id="utc-time">--:--:--</span>
+      </p>
+      <p>
+        Current Day: <span data-testid="currentDay" id="current-day">--</span>
+      </p>
+      <div id="links">
+        <a
+          class="bottom_link_1"
+          href="https://hng.tech/learn"
+          data-testid="hngLink"
+          target="_blank"
+          >Learn with HNG</a
+        >
+        <a
+          class="bottom_link_2"
+          href="https://keyword.dog"
+          data-testid="keywordLink"
+          target="_blank"
+          >Keyword.dog</a
+        >
+        <a
+          class="bottom_link_3"
+          href="https://scrapeanyweb.site"
+          data-testid="scrapeanywebLink"
+          target="_blank"
+          >Scrape Any Web</a
+        >
+      </div>
+    </div>
+    <!-- <script src="assets/js/particles.min.js"></script> -->
+    <script>
+      // ParticlesJS for nice appearance but, better safe than sorry.
+      // particlesJS("particles-js", {
+      //   particles: {
+      //     number: {
+      //       value: 80,
+      //       density: {
+      //         enable: true,
+      //         value_area: 800,
+      //       },
+      //     },
+      //     color: {
+      //       value: "#ffffff",
+      //     },
+      //     shape: {
+      //       type: "circle",
+      //       stroke: {
+      //         width: 0,
+      //         color: "#000000",
+      //       },
+      //       polygon: {
+      //         nb_sides: 5,
+      //       },
+      //       image: {
+      //         src: "img/github.svg",
+      //         width: 100,
+      //         height: 100,
+      //       },
+      //     },
+      //     opacity: {
+      //       value: 0.5,
+      //       random: false,
+      //       anim: {
+      //         enable: false,
+      //         speed: 1,
+      //         opacity_min: 0.1,
+      //         sync: false,
+      //       },
+      //     },
+      //     size: {
+      //       value: 3,
+      //       random: true,
+      //       anim: {
+      //         enable: false,
+      //         speed: 40,
+      //         size_min: 0.1,
+      //         sync: false,
+      //       },
+      //     },
+      //     line_linked: {
+      //       enable: true,
+      //       distance: 150,
+      //       color: "#ffffff",
+      //       opacity: 0.4,
+      //       width: 1,
+      //     },
+      //     move: {
+      //       enable: true,
+      //       speed: 6,
+      //       direction: "none",
+      //       random: false,
+      //       straight: false,
+      //       out_mode: "out",
+      //       attract: {
+      //         enable: false,
+      //         rotateX: 600,
+      //         rotateY: 1200,
+      //       },
+      //     },
+      //   },
+      //   interactivity: {
+      //     detect_on: "canvas",
+      //     events: {
+      //       onhover: {
+      //         enable: true,
+      //         mode: "repulse",
+      //       },
+      //       onclick: {
+      //         enable: true,
+      //         mode: "push",
+      //       },
+      //       resize: true,
+      //     },
+      //     modes: {
+      //       grab: {
+      //         distance: 400,
+      //         line_linked: {
+      //           opacity: 1,
+      //         },
+      //       },
+      //       bubble: {
+      //         distance: 400,
+      //         size: 40,
+      //         duration: 2,
+      //         opacity: 8,
+      //         speed: 3,
+      //       },
+      //       repulse: {
+      //         distance: 200,
+      //       },
+      //       push: {
+      //         particles_nb: 4,
+      //       },
+      //       remove: {
+      //         particles_nb: 2,
+      //       },
+      //     },
+      //   },
+      //   retina_detect: true,
+      //   config_demo: {
+      //     hide_card: false,
+      //     background_color: "#b61924",
+      //     background_image: "",
+      //     background_position: "50% 50%",
+      //     background_repeat: "no-repeat",
+      //     background_size: "cover",
+      //   },
+      // });
+
+      function mapUTCDaytoFullDay(utcDay) {
+        const days = [
+          "Sunday",
+          "Monday",
+          "Tuesday",
+          "Wednesday",
+          "Thursday",
+          "Friday",
+          "Saturday",
+        ];
+        return days[utcDay];
+      }
+
+      // Display current UTC time
+      function updateTime() {
+        const now = new Date();
+        const utcTime = now.toUTCString().split(" ")[4];
+        const currentDay = mapUTCDaytoFullDay(now.getUTCDay());
+        document.getElementById("utc-time").innerText = utcTime + "Z";
+        document.getElementById("current-day").innerText = currentDay;
+      }
+
+      setInterval(updateTime, 1000);
+    </script>
+  </body>
+</html>
